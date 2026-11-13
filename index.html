@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Image AI Studio</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 25px 16px;
+  background: #10101c;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+header { text-align: center; margin: 25px 0 35px; }
+h1 { color: #b99aff; font-size: 29px; }
+header p { color: #aaa; }
+main { max-width: 650px; margin: auto; }
+.panel {
+  background: #1c1c2c;
+  border: 1px solid #393952;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+label { display: block; margin: 15px 0 8px; }
+textarea, select, input {
+  width: 100%;
+  padding: 13px;
+  border-radius: 9px;
+  border: 1px solid #44445e;
+  background: #111120;
+  color: white;
+  font-size: 15px;
+}
+textarea { min-height: 110px; resize: vertical; }
+button {
+  width: 100%;
+  padding: 15px;
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(100deg,#7651e9,#ad58e8);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+#status { color: #c5a9ff; text-align: center; }
+footer { text-align: center; color: #777; margin: 30px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>✦ My Image AI Studio</h1>
+  <p>Your imagination, your creations.</p>
+</header>
+
+<main>
+  <section class="panel">
+    <h2>Create an image</h2>
+
+    <label for="prompt">Describe your image</label>
+    <textarea id="prompt" placeholder="Describe the image you want to create..."></textarea>
+
+    <label for="style">Art style</label>
+    <select id="style">
+      <option>Photorealistic</option>
+      <option>Anime</option>
+      <option>Cinematic</option>
+      <option>Fantasy</option>
+      <option>3D Art</option>
+      <option>Digital Art</option>
+    </select>
+
+    <label for="ratio">Aspect ratio</label>
+    <select id="ratio">
+      <option>1:1</option>
+      <option>16:9</option>
+      <option>9:16</option>
+      <option>4:3</option>
+    </select>
+
+    <label for="negative">Negative prompt (optional)</label>
+    <input id="negative" placeholder="Things you don't want in the image">
+
+    <button onclick="generate()">Generate image ✨</button>
+    <p id="status"></p>
+  </section>
+
+  <section class="panel">
+    <h2>Your creations</h2>
+    <p id="gallery">Your generated images will appear here.</p>
+  </section>
+</main>
+
+<footer>My Image AI Studio · Version 1.0</footer>
+
+<script>
+function generate() {
+  const prompt = document.getElementById("prompt").value.trim();
+  const status = document.getElementById("status");
+
+  if (!prompt) {
+    status.textContent = "Please enter an image description first.";
+    return;
+  }
+
+  status.textContent =
+    "Your design is ready to be sent to the AI engine. AI connection is not configured yet.";
+}
+</script>
+</body>
+</html>
